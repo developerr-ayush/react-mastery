@@ -1,93 +1,95 @@
 # React Mastery
 
-## Prerequist
+## Prerequisites
 
-- Node
-- vs code (or any other code editor)
-- broswer (chrome/firefox/...)
+- Node.js
+- VS Code (or any other code editor)
+- Browser (Chrome/Firefox/...)
 
-### important things to note
+### Important Things to Note
 
-- we are using vite for creating react app as it is faster way to create react app
-- we will be using jsx over here so using vite already gives us files with jsx extention
-- will also cover jsx syntex over here after a little bit further
+- We are using Vite to create a React app as it is a faster way to set up a React project.
+- We will be using JSX in this project, and Vite automatically provides files with the .jsx extension.
+- We will cover JSX syntax in detail later.
 
-### how to get started
+### Getting Started
 
-- First download node latest version which has LTS means long term support as it is stable version
-- after installing node must check this command `node -v` if it gives error then there is mistake
-- _create_ your first react app by this command `npm create vite@latest`
-- project name will be . if you dont want any other folder inside of it
-- framework - react (yes using vite you can create various frameworks)
-- varient will be _javascript_
-- after this install all dependencies by `npm i`
-- to start server use `npm run dev`
-- our main files are inside `src` folder `app.jsx` and `main.jsx`
+1. Download and install the latest LTS (Long-Term Support) version of Node.js, as it is the stable version.
+2. After installing Node.js, verify the installation by running the command `node -v`. If it gives an error, there might be a mistake in the installation.
+3. Create your first React app using the following command: `npm create vite@latest`.
+   - For the project name, you can use "." if you don't want to create an additional folder.
+   - Choose the framework as React (Vite supports various frameworks).
+   - Select the variant as JavaScript.
+4. After creating the app, navigate to the project directory and install all dependencies using the command `npm i`.
+5. Start the development server using `npm run dev`.
+6. The main files of the project are located inside the `src` folder: `app.jsx` and `main.jsx`.
 
-### Congrats your first react app is here you can see it on your browser
+Congratulations! Your first React app is now running, and you can view it in your browser.
 
-### lets delete files which will be not used
+### Setting up the Boilerplate
 
-### in simple word lets create boiler plate
+To set up the boilerplate, follow these steps:
 
-- inside `src folder` delete `index.css` and `app.css`
-- inside `main.jsx` delete a line `import './index.css'`
-- inside `app.jsx` delete every line`
-- inside `app.jsx` paste the above code (we are just removing all unnecessary lines)
+1. Inside the `src` folder, delete the `index.css` and `app.css` files.
+2. In `main.jsx`, remove the line `import './index.css'`.
+3. In `app.jsx`, delete all the existing lines.
+4. Replace the content of `app.jsx` with the following code:
 
-```
+```jsx
 function App() {
-  return "Hello world"
+  return "Hello world";
 }
 
-export default App
+export default App;
 ```
 
-- this syntex will be explained further
+This syntax will be explained in more detail later.
 
-### something more about jsx
+### Exploring JSX
 
-- jsx means you can write HTML inside js.
-- ofcourse we were havong template literal but its a complex thing to do.
-- it is very easy to use jsx
-- if you just want to create a h1 tag inside our file then it will be like as shown below in return of function you can use any tag
+JSX allows you to write HTML inside JavaScript. It's easy to use JSX. For example, to create an `h1` tag, you can write the following code inside the `App` function:
 
-app.js
-
-```
+```jsx
 function App() {
-  return <h1>Hello World</h1>
+  return <h1>Hello World</h1>;
 }
 
-export default App
+export default App;
 ```
 
-- lets suppose we want multiple line
-- if you use like this it will gonna give error
+If you want to write multiple lines of JSX code, you cannot write them directly without enclosing them. The following code will result in an error:
 
-```
+```jsx
 function App() {
-  return <h1>Hello World</h1> <p>Hello World</p>
+  return <h1>Hello World</h1> <p>Hello World</p>;
 }
 
-export default App
+export default App;
 ```
 
-## basic of jsx
+To fix this, enclose the elements within parentheses `()` or use empty brackets `<>` like this:
 
-- inside return there should be `()` circle braces as it is gonna gove long output
-- if there is multiple element then it should be enclosed in a div or empty brackes like this `<>Something here</>`
-- for attributes like `aria-expanded` or any attribute have hyphen in between you will have to use `ariaExpanded` means we have to use camel casing
-- there are some reserve keywords in jsx like `class` and `for` so you cant use class or for attribute insted of that you will have to use `className` and `htmlFor` attribute
-- to write js inside of the html which is written in return we will use curly braces `{}` like this `<div> <h1>{3+3*5}</h1> </div`
-- that basically mean inside curly braces whatever we write it will be executed as javascript
-- to write `inline style`
-  - as we know we write `inline style` like this `<h1 style="background:red">Hello world</h1>` but its an invalid syntex
-  - we are gonna use a js object syntex for writing `inline style`
-  - first inside style tag we will write like this `style={}` it basically mean inside `{}` brackets js will come
-  - then we will do `style={{}}`, so bascally inside that we are gonna create object
-  - also if there is hyphen inside of css property like `border-top` we will use `borderTop`
-  - final output will be `style={{ background: "red", borderTop: "3px solid black" }}`
-- if there is empty tag line `<input type="number">` we will have to self close it like `<input type="number"/>` or we can also do like this `<input type="number"></input>`
-- we can also store element/tags inside of variable like `let instaId = <span>developer_ayush</span>` _it will not be defined in return it should be outside of return_
-- we can use it like `<h1>Ayush insta id is {instaId}</h1>` in return
+```jsx
+function App() {
+  return (
+    <>
+      <h1>Hello World</h1>
+      <p>Hello World</p>
+    </>
+  );
+}
+
+export default App;
+```
+
+Here are some basics of JSX:
+
+- Inside the `return` statement, wrap the JSX code in parentheses `()` when it spans multiple lines.
+- If there are multiple adjacent elements, they should be enclosed within a parent element, such as a `div`, or by using empty brackets `<>`.
+- JSX attribute names follow camel case instead of using hyphens. For example, use `ariaExpanded` instead of `aria-expanded`.
+- Some reserved keywords in JSX, like `class` and `for`, cannot be used as attribute names. Instead, use `className` for `class` and `htmlFor` for `for`.
+- To write JavaScript expressions inside JSX, use curly braces `{}`. For example: `<div> <h1>{3 + 3 * 5}</h1> </div>`.
+- To apply inline styles, use the `style` attribute with a JavaScript object syntax. For example: `style={{ background: "red", borderTop: "3px solid black" }}`.
+- Self-closing tags should be written with a trailing slash, such as `<input type="number" />`. Alternatively, you can also write them as `<input type="number"></input>`.
+- You can store JSX elements in variables, like `let instaId = <span>developer_ayush</span>`. Remember to define variables outside the `return` statement.
+- You can then use the variable inside JSX, such as `<h1>Ayush's Instagram ID is {instaId}</h1>`.
