@@ -93,3 +93,71 @@ Here are some basics of JSX:
 - Self-closing tags should be written with a trailing slash, such as `<input type="number" />`. Alternatively, you can also write them as `<input type="number"></input>`.
 - You can store JSX elements in variables, like `let instaId = <span>developer_ayush</span>`. Remember to define variables outside the `return` statement.
 - You can then use the variable inside JSX, such as `<h1>Ayush's Instagram ID is {instaId}</h1>`.
+
+## What is a Component?
+
+In React, components are the building blocks of a user interface. They represent reusable and independent pieces of code that encapsulate a specific functionality and return HTML (or JSX) to be rendered on the screen. Components in React can be compared to JavaScript functions, as they serve a similar purpose but work in isolation.
+
+React components allow you to break down your UI into smaller, self-contained elements, making it easier to manage and maintain your code. Each component can have its own logic, state, and props, allowing for reusability and modular development.
+
+There are two types of components in React:
+
+1. **Class Components:** Class components are defined using ES6 classes and extend the `React.Component` class. They have more advanced features, such as local state and lifecycle methods. However, we will focus on function components, as class components are being deprecated soon.
+
+2. **Function Components:** Function components are defined as JavaScript functions. They take in `props` as input and return JSX as output. Function components are simpler and more lightweight than class components. They have become the preferred way of writing components in modern React applications.
+
+## How to Create Components
+
+To create a component in React, follow these steps:
+
+1. Determine the functionality or purpose of the component you want to create. Components should be independent and reusable pieces of code that represent specific UI elements or logic.
+
+2. Decide whether to create a class component or a function component. For this document, we will focus on function components.
+
+3. Create a new file with the `.jsx` extension in the desired location within your project's source code. It's common practice to create a separate folder, such as `components`, to store all your components for better organization and maintainability.
+
+4. Make sure to start the file name with **capital letter**
+
+5. Define your component as a JavaScript function. Give the function a name that starts with a capital letter. For example, if you are creating a navigation component, you can name it `Navigation`. **it is recomanded that function name and file name should be same name** 
+
+6. Inside the component function, write the JSX code that represents the desired UI element or logic. For example, if you are creating a navigation component, you can write the JSX for a navigation bar with menu items.
+
+7. Finally, export the component function using the `export` keyword. This allows other files to import and use the component.
+
+```jsx
+export function Navigation() {
+  return (
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  );
+}
+```
+
+8. In the file where you want to use the component, import it using the appropriate path. If the component is stored in a separate folder, include the folder name as part of the import statement.
+
+```jsx
+import { Navigation } from "./components/Navigation";
+```
+
+9. Now, you can use the component as a JSX element in the desired location within your code.
+
+```jsx
+function App() {
+  return (
+    <>
+      <Navigation />
+      <h1>Ayush Shah</h1>
+    </>
+  );
+}
+```
+
+In the above example, the `<Navigation />` component is being used within the `App` component. This allows the navigation component to be rendered alongside the "Ayush Shah" heading.
+
+By following these steps, you can create and use components in your React application. Remember to separate your UI into smaller, reusable components for better code organization and maintainability.

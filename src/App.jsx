@@ -1,7 +1,11 @@
+import { Navigation } from "./components/Navigation"
+
 function App() {
-  let instaId = <span>developer_ayush</span>
   return (
-    <h1>Ayush insta id is {instaId}</h1>
+    <>
+      <Navigation />
+      <h1>Ayush Shah</h1>
+    </>
   )
 }
 
