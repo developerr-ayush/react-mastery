@@ -67,7 +67,7 @@ function App() {
 export default App;
 ```
 
-To fix this, enclose the elements within parentheses `()` or use empty brackets `<>` like this:
+To fix this, enclose the elements within parentheses `()` and use empty brackets `<>` like this:
 
 ```jsx
 function App() {
