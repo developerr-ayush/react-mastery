@@ -161,3 +161,42 @@ function App() {
 In the above example, the `<Navigation />` component is being used within the `App` component. This allows the navigation component to be rendered alongside the "Ayush Shah" heading.
 
 By following these steps, you can create and use components in your React application. Remember to separate your UI into smaller, reusable components for better code organization and maintainability.
+
+## props
+- props is nothing but properties and its very usefull in react
+- lets suppose we have a components in which just data is changing 
+- we can also say to avoid repetation of code we can use props 
+- with props we are building a dynamic website, in which props plays important element 
+- we pass information/data of child through parents
+### lets take example of props
+```jsx
+export function Person(props) {
+    return (
+        <div>
+            <h3>Ayush Shah</h3>
+            <h4>Web developer</h4>
+            <h5>20 Years old</h5>
+            <p>Live in Mumbai</p>
+        </div>
+    )
+}
+```
+- as we can see data is been hard coded in there in `Person.jsx` which is inside of components folder
+- in `app.jsx` we will import like this 
+
+```jsx
+import { Navigation } from "./components/Navigation"
+import { Person } from './components/Person';
+
+function App() {
+  return (
+    <>
+      <Navigation />
+      <Person/>
+      <h1>Ayush Shah</h1>
+    </>
+  )
+}
+
+export default App
+```  
