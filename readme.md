@@ -161,3 +161,54 @@ function App() {
 In the above example, the `<Navigation />` component is being used within the `App` component. This allows the navigation component to be rendered alongside the "Ayush Shah" heading.
 
 By following these steps, you can create and use components in your React application. Remember to separate your UI into smaller, reusable components for better code organization and maintainability.
+
+## Props
+In React, props (short for "properties") are a way to pass data and configuration settings to components. They allow us to create reusable components and make our website more dynamic by updating the component's data.
+
+## Example Usage
+Let's take an example to understand how props work. In this example, we have a `Person` component that displays information about a person.
+
+```jsx
+// Person.jsx
+export function Person(props) {
+    return (
+        <div>
+            <h3>{props.name}</h3>
+            <h4>{props.profession}</h4>
+            <h5>{props.age} Years old</h5>
+            <p>Live in {props.city}</p>
+        </div>
+    )
+}
+```
+
+In the above code, the `Person` component receives `props` as a parameter. We can then access the individual properties (`name`, `profession`, `age`, `city`) using `props.propertyName`.
+
+Now, let's use the `Person` component in our `App` component:
+
+```jsx
+// App.jsx
+import { Person } from './components/Person';
+
+function App() {
+    return (
+        <>
+            <h1>Welcome to My Website</h1>
+            <Person name="Ayush Shah" profession="Web developer" age="20" city="Mumbai" />
+            <Person name="John Doe" profession="Designer" age="25" city="New York" />
+        </>
+    );
+}
+
+export default App;
+```
+
+In this example, we have used the `Person` component twice with different values for each person. By passing different props to the `Person` component, we can dynamically update the displayed information for each person.
+
+## Benefits of Props
+Using props provides several benefits:
+- **Code Reusability**: Instead of creating separate components for each person, we can reuse the `Person` component and pass different props to display information for different individuals.
+- **Dynamic Updates**: Props allow us to make our website more dynamic by easily updating the data displayed in components based on the passed props.
+- **Data Flow**: Props facilitate the flow of information from parent components to child components. Parent components can pass data to child components using props.
+
+By utilizing props effectively, we can create flexible and reusable components in React, resulting in more maintainable and efficient code.
