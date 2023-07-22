@@ -14,26 +14,55 @@
 
 ### Getting Started
 
-1. Download and install the latest LTS (Long-Term Support) version of Node.js, as it is the stable version.
-2. After installing Node.js, verify the installation by running the command `node -v`. If it gives an error, there might be a mistake in the installation.
-3. Create your first React app using the following command: `npm create vite@latest`.
+1. **Download and Install Node.js**
+
+   Download and install the latest LTS (Long-Term Support) version of Node.js, as it is the stable version.
+
+2. **Verify Node.js Installation**
+
+   After installing Node.js, verify the installation by running the command `node -v` in your terminal or command prompt. If it gives an error, there might be a mistake in the installation.
+
+3. **Create a New React App**
+
+   Create your first React app using the following command in your terminal or command prompt: `npm create vite@latest`.
+
    - For the project name, you can use "." if you don't want to create an additional folder.
    - Choose the framework as React (Vite supports various frameworks).
    - Select the variant as JavaScript.
-4. After creating the app, navigate to the project directory and install all dependencies using the command `npm i`.
-5. Start the development server using `npm run dev`.
-6. The main files of the project are located inside the `src` folder: `app.jsx` and `main.jsx`.
 
-Congratulations! Your first React app is now running, and you can view it in your browser.
+4. **Install Dependencies**
+
+   After creating the app, navigate to the project directory using `cd your-project-folder` and install all dependencies using the command `npm i`.
+
+5. **Start the Development Server**
+
+   Start the development server using `npm run dev`. This will run your React app, and you can view it in your browser.
+
+6. **Project Structure**
+
+   The main files of the project are located inside the `src` folder: `app.jsx` and `main.jsx`.
+
+   Now, your first React app is running, and you are ready to build awesome things!
 
 ### Setting up the Boilerplate
 
 To set up the boilerplate, follow these steps:
 
-1. Inside the `src` folder, delete the `index.css` and `app.css` files.
-2. In `main.jsx`, remove the line `import './index.css'`.
-3. In `app.jsx`, delete all the existing lines.
-4. Replace the content of `app.jsx` with the following code:
+1. **Remove Unnecessary Files**
+
+   Inside the `src` folder, delete the `index.css` and `app.css` files.
+
+2. **Clean Up `main.jsx`**
+
+   In `main.jsx`, remove the line `import './index.css'`.
+
+3. **Reset `app.jsx`**
+
+   In `app.jsx`, delete all the existing lines.
+
+4. **Replace `app.jsx` Content**
+
+   Replace the content of `app.jsx` with the following code:
 
 ```jsx
 function App() {
@@ -42,8 +71,6 @@ function App() {
 
 export default App;
 ```
-
-This syntax will be explained in more detail later.
 
 ### Exploring JSX
 
@@ -116,15 +143,17 @@ To create a component in React, follow these steps:
 
 3. Create a new file with the `.jsx` extension in the desired location within your project's source code. It's common practice to create a separate folder, such as `components`, to store all your components for better organization and maintainability.
 
-4. Make sure to start the file name with **capital letter**
+4. Make sure to start the file name with a capital letter.
 
-5. Define your component as a JavaScript function. Give the function a name that starts with a capital letter. For example, if you are creating a navigation component, you can name it `Navigation`. **it is recomanded that function name and file name should be same name** 
+5. Define your component as a JavaScript function. Give the function a name that starts with a capital letter. For example, if you are creating a navigation component, you can name it `Navigation`. It is recommended that the function name and file name should be the same.
 
 6. Inside the component function, write the JSX code that represents the desired UI element or logic. For example, if you are creating a navigation component, you can write the JSX for a navigation bar with menu items.
 
 7. Finally, export the component function using the `export` keyword. This allows other files to import and use the component.
 
-```jsx
+```
+
+jsx
 export function Navigation() {
   return (
     <nav>
@@ -163,9 +192,11 @@ In the above example, the `<Navigation />` component is being used within the `A
 By following these steps, you can create and use components in your React application. Remember to separate your UI into smaller, reusable components for better code organization and maintainability.
 
 ## Props
+
 In React, props (short for "properties") are a way to pass data and configuration settings to components. They allow us to create reusable components and make our website more dynamic by updating the component's data.
 
-## Example Usage
+### Example Usage
+
 Let's take an example to understand how props work. In this example, we have a `Person` component that displays information about a person.
 
 ```jsx
@@ -183,6 +214,8 @@ export function Person(props) {
 ```
 
 In the above code, the `Person` component receives `props` as a parameter. We can then access the individual properties (`name`, `profession`, `age`, `city`) using `props.propertyName`.
+
+### Using the `Person` Component
 
 Now, let's use the `Person` component in our `App` component:
 
@@ -205,8 +238,10 @@ export default App;
 
 In this example, we have used the `Person` component twice with different values for each person. By passing different props to the `Person` component, we can dynamically update the displayed information for each person.
 
-## Benefits of Props
+### Benefits of Props
+
 Using props provides several benefits:
+
 - **Code Reusability**: Instead of creating separate components for each person, we can reuse the `Person` component and pass different props to display information for different individuals.
 - **Dynamic Updates**: Props allow us to make our website more dynamic by easily updating the data displayed in components based on the passed props.
 - **Data Flow**: Props facilitate the flow of information from parent components to child components. Parent components can pass data to child components using props.
