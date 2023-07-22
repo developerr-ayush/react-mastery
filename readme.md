@@ -67,7 +67,7 @@ function App() {
 export default App;
 ```
 
-To fix this, enclose the elements within parentheses `()` and use empty brackets `<>` like this:
+To fix this, enclose the elements within parentheses `()` and use empty brackets (called as React Fragments) `<>` like this:
 
 ```jsx
 function App() {
@@ -85,7 +85,7 @@ export default App;
 Here are some basics of JSX:
 
 - Inside the `return` statement, wrap the JSX code in parentheses `()` when it spans multiple lines.
-- If there are multiple adjacent elements, they should be enclosed within a parent element, such as a `div`, or by using empty brackets `<>`.
+- If there are multiple adjacent elements, they should be enclosed within a parent element, such as a `div`, or by using empty brackets (called as React Fragments) `<>`.
 - JSX attribute names follow camel case instead of using hyphens. For example, use `ariaExpanded` instead of `aria-expanded`.
 - Some reserved keywords in JSX, like `class` and `for`, cannot be used as attribute names. Instead, use `className` for `class` and `htmlFor` for `for`.
 - To write JavaScript expressions inside JSX, use curly braces `{}`. For example: `<div> <h1>{3 + 3 * 5}</h1> </div>`.
