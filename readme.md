@@ -429,6 +429,103 @@ Advantages of uncontrolled components:
 
 In general, it is recommended to use controlled components for most scenarios as they provide more control and make it easier to manage the form state, especially for complex forms or when you need to perform validation and handle form submission. Uncontrolled components might be more suitable for simple use cases where you don't need to perform real-time validation or when dealing with large, dynamic forms.
 
+### `useEffect` Hook
+
+The `useEffect` hook in React allows you to perform side effects in functional components. Side effects can include things like data fetching, subscriptions, or manually changing the DOM. It is similar to the lifecycle methods (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) in class components.
+
+Syntax:
+
+```jsx
+useEffect(() => {
+  // Side effect code here
+  // This function will run after the component renders
+  // It can be used to perform tasks on component mount, update, or unmount
+
+  return () => {
+    // Cleanup code here
+    // This function will run before the component unmounts
+    // It can be used to clean up resources like subscriptions, timers, etc.
+  };
+}, [dependencyArray]);
+```
+
+The `useEffect` hook takes two arguments:
+
+1. A function that represents the side effect you want to perform.
+2. An optional dependency array (`[dependencyArray]`) that contains values from the component's state or props. When one or more of these dependencies change, the effect will run again.
+
+### Example Usage of `useEffect`
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+function ExampleComponent() {
+  const [item, setItem] = useState("Example Item");
+  const [price, setPrice] = useState(100);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // This function will run after the component renders for the first time and whenever 'item' or 'price' changes.
+    console.log(item);
+    document.title = item;
+
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // The cleanup function: This will run before the component unmounts or when 'item' or 'price' changes next time.
+    return () => {
+      console.log('Component is unmounting or "item" or "price" is changing.');
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [item, price]); // Only re-run the effect if 'item' or 'price' changes
+
+  return (
+    <>
+      <h1>{item}</h1>
+      <p>Price: {price}</p>
+      <p>Window Width: {width}</p>
+    </>
+  );
+}
+```
+
+In the above example, the `useEffect` hook is used to set the document title based on the value of `item`, and it also adds a window resize event listener to update the `width` state whenever the window is resized.
+
+The dependency array `[item, price]` ensures that the effect runs whenever the values of `item` or `price` change. If you pass an empty dependency array (`[]`) as the second argument to `useEffect`, the effect will only run once after the initial render (equivalent to `componentDidMount`).
+
+Remember that if you have a cleanup function in `useEffect`, it will be executed before the component unmounts or before the effect runs again due to changes in the dependencies.
+
+### Common Use Cases of `useEffect`
+
+1. **Data Fetching**: You can use `useEffect` to fetch data from an API when the component mounts and update the state accordingly.
+
+2. **Subscriptions**: `useEffect` is useful for setting up and tearing down subscriptions, such as WebSocket connections.
+
+3. **DOM Manipulation**: If you need to perform manual DOM manipulations or interact with third-party libraries that require access to the DOM, you can use `useEffect`.
+
+4. **Timers and Intervals**: `useEffect` can be used to set up and clean up timers and intervals.
+
+### When to Use `useEffect`
+
+- Use `useEffect` when you need to perform side effects in functional components, such as fetching data, manipulating the DOM, or subscribing to events.
+
+- Avoid using `useEffect` for tasks that don't require cleanup or are not dependent on component state or props, as it may lead to unnecessary re-renders.
+
+- If you have multiple side effects in a component, you can use multiple `useEffect` hooks to separate concerns and manage dependencies for each effect.
+
+### Cleanup in `useEffect`
+
+- If your `useEffect` performs any setup that needs to be cleaned up when the component unmounts or before the effect runs again, you can return a cleanup function from the effect.
+
+- The cleanup function is executed before the component unmounts or before the effect runs again if any of the dependencies change.
+
+- This is useful for unsubscribing from subscriptions, clearing timers, or removing event listeners to prevent memory leaks and unnecessary side effects.
+
+With the `useEffect` hook, you can handle side effects in your functional components with more control and flexibility. Just remember to manage dependencies properly to avoid unintended behavior and optimize performance.
+
 ### Conclusion
 
 React is a powerful and popular JavaScript library for building user interfaces. By following the steps provided in the "Getting Started" section, you can set up your development environment and create your first React app.
