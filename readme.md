@@ -156,9 +156,7 @@ export function Navigation() {
         <li>About</li>
         <li>Services</li>
         <li>Contact</li>
-      </
-
-ul>
+      </ul>
     </nav>
   );
 }
@@ -358,9 +356,10 @@ function App() {
       <h1>Count: {count}</h1>
       <button onClick={handleIncrement}>Increment</button>
       <input type="text" value={message} onChange={handleChange} />
-      <p>Message:
-
- {message}</p>
+      <p>
+        Message:
+        {message}
+      </p>
     </>
   );
 }
@@ -373,39 +372,38 @@ function App() {
 In the context of React, controlled and uncontrolled components refer to different ways of managing and handling form inputs and their state.
 
 1. Controlled Components:
-Controlled components are React components where the value of the form element (e.g., input, textarea, select) is controlled by React state. This means that the component's state is the single source of truth for the input's value, and any changes to the input value are handled by updating the state. To update the input value, you need to use the `onChange` event and update the state with the new value.
+   Controlled components are React components where the value of the form element (e.g., input, textarea, select) is controlled by React state. This means that the component's state is the single source of truth for the input's value, and any changes to the input value are handled by updating the state. To update the input value, you need to use the `onChange` event and update the state with the new value.
 
 Example of a controlled input component:
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ControlledComponent = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  return (
-    <input type="text" value={inputValue} onChange={handleChange} />
-  );
+  return <input type="text" value={inputValue} onChange={handleChange} />;
 };
 ```
 
 In this example, the `inputValue` state controls the value of the input, and any changes to the input are reflected in the state, and vice versa.
 
 Advantages of controlled components:
+
 - You have full control over the input's value and can easily manipulate and validate it.
 - The input state can be easily shared or managed across different components.
 
 2. Uncontrolled Components:
-Uncontrolled components, on the other hand, allow form inputs to manage their own state internally, without being controlled by React state. In this approach, the component relies on DOM refs to get the input's value when needed, rather than handling every change through React events.
+   Uncontrolled components, on the other hand, allow form inputs to manage their own state internally, without being controlled by React state. In this approach, the component relies on DOM refs to get the input's value when needed, rather than handling every change through React events.
 
 Example of an uncontrolled input component:
 
 ```jsx
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 const UncontrolledComponent = () => {
   const inputRef = useRef(null);
@@ -427,6 +425,7 @@ const UncontrolledComponent = () => {
 In this example, the input manages its own state, and we access its value using the `inputRef` when needed.
 
 Advantages of uncontrolled components:
+
 - Less code is required compared to controlled components, as you don't need to handle every change explicitly.
 - It can be useful for simple forms and in cases where you don't need to track the input's value in real-time.
 

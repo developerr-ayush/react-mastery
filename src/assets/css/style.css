@@ -1,7 +1,13 @@
-body{
-    background-color: aquamarine;
+body {
+  background-color: aquamarine;
 }
-.logo{
-    width: 100px;
-    height: 100px;
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.quantity .data {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
 }
