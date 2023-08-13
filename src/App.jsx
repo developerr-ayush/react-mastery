@@ -1,62 +1,72 @@
-import { useState, useEffect } from "react";
-import './assets/css/style.css'
+import { useState } from "react";
+
 function App() {
-
-  const [item, setitem] = useState("");
-  const [price, setprice] = useState(0);
-  const [quantity, setquantity] = useState(0);
-  const [width, setwidth] = useState(window.innerWidth);
-  const changeProduct = (event) => {
-    setitem(event.target.value)
+  const [array, setarray] = useState([1, 2, 3, 4, 5]);
+  //
+  function removeFirst() {
+    setarray((currentArray) => {
+      return currentArray.slice(1);
+    });
   }
-  function addQuantity() {
-    setquantity(quantity + 1)
+  function addBegining(element) {
+    setarray((currentArray) => {
+      return [element, ...currentArray];
+    });
   }
-  function subQuantity() {
-    setquantity(quantity - 1)
+  function addEnding(element) {
+    setarray((currentArray) => {
+      return [...currentArray, element];
+    });
   }
-  const changePrice = (event) => {
-    setprice(event.target.value)
+  function removeSpecific() {
+    setarray((currentArray) => {
+      return currentArray.filter((e) => e !== 4);
+    });
   }
-
-
-  // useEffect
-  // will run automatically on page load
-  useEffect(e => {
-    console.log(item)
-    document.title = item
-    window.addEventListener('resize', e => {
-      setwidth(window.innerWidth)
-    })
-  }, [item, price]) // dependency array , if there is just an empty bracket then it will run once when page is loaded
-
+  function replace(num, replace) {
+    setarray((currentArray) => {
+      return currentArray.map((e) => {
+        if (e === num) {
+          return replace;
+        }
+        return e;
+      });
+    });
+  }
 
   return (
     <>
-      <h1>Screen width = {width}</h1>
-      <h2>Product name: {item}</h2>
-      <h3>Price ₹{price}</h3>
-      <h3>Quantity : {quantity}</h3>
-
-      <div>
-        <label htmlFor="name">
-          Product name:
-        </label>
-        <input type="text" id="name" value={item} onChange={changeProduct} />
-      </div>
-
-      <div>
-        <label htmlFor="price">
-          Product price:
-        </label>
-        <input type="number" id="price" onChange={changePrice} />
-      </div>
-
-      <div className="quantity">
-        <button className="sub" onClick={subQuantity}>-</button>
-        <span className="data">{quantity}</span>
-        <button className="add" onClick={addQuantity}>+</button>
-      </div>
+      <h1>This is our array</h1>
+      <h2>Array: {array.join(", ")}</h2>
+      <button onClick={removeFirst}>Remove First</button>
+      <button
+        onClick={(e) => {
+          removeSpecific(4);
+        }}
+      >
+        Remove Specific 4
+      </button>
+      <button
+        onClick={(e) => {
+          addBegining(4);
+        }}
+      >
+        add begining 4
+      </button>
+      <button
+        onClick={(e) => {
+          addEnding(5);
+        }}
+      >
+        add Ending 5
+      </button>
+      <button
+        onClick={(e) => {
+          replace(5, 3);
+        }}
+      >
+        add Ending5 with 3
+      </button>
     </>
   );
 }

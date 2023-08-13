@@ -526,14 +526,104 @@ Remember that if you have a cleanup function in `useEffect`, it will be executed
 
 With the `useEffect` hook, you can handle side effects in your functional components with more control and flexibility. Just remember to manage dependencies properly to avoid unintended behavior and optimize performance.
 
-### Conclusion
+## component lifecycle
 
-React is a powerful and popular JavaScript library for building user interfaces. By following the steps provided in the "Getting Started" section, you can set up your development environment and create your first React app.
+- components in react have a life cycle
+  steps are
+- mount - method run after component is rendered
+- update - whenever component gets updated
+- unmount - whenever component is removed
 
-Understanding JSX and components is essential in React development. JSX allows you to write HTML-like syntax in your JavaScript code, making it easier to create UI elements. Components, whether function components or class components, are the building blocks of a React app. They enable you to create reusable and modular pieces of UI and logic.
+- whenever a component is created that means mount
+- whenever a component is unmounted then its states also got destroyed
 
-Props are a fundamental concept in React that allows you to pass data and configuration settings to components. By using props, you can create dynamic and reusable components that display different information based on the data passed to them.
+about practical example
 
-State management is another important aspect of React. The `useState` hook provides an easy way to manage and update state in function components. By understanding controlled and uncontrolled components, you can choose the most appropriate approach for handling form inputs and their state.
+- created a button which shows or hide component in react
 
-With these concepts and knowledge, you are now equipped to start building more complex and interactive React applications. Happy coding!
+```jsx
+import { useState } from "react";
+import "./assets/css/style.css";
+import { Person } from "./components/Person";
+function App() {
+  const [showPerson, setshowPerson] = useState(true);
+  return (
+    <>
+      <button onClick={() => setshowPerson(!showPerson)}>Toggle</button>
+      {showPerson ? (
+        <Person name="Ayush" profession="Web dev" age="20" city="Mumbai" />
+      ) : null}
+    </>
+  );
+}
+export default App;
+```
+
+## Array in react
+
+- if we want to declare an array then it will be in useState
+- never modify existing array value in react
+- use slice method , fiter method or methods which doesnt change orignal array
+- here is code with example
+
+```jsx
+import { useState } from "react";
+
+function App() {
+  const [array, setarray] = useState([1, 2, 3, 4, 5]);
+
+  // Function to remove the first element from the array
+  function removeFirst() {
+    setarray((currentArray) => {
+      return currentArray.slice(1);
+    });
+  }
+
+  // Function to add an element to the beginning of the array
+  function addBegining(element) {
+    setarray((currentArray) => {
+      return [element, ...currentArray];
+    });
+  }
+
+  // Function to add an element to the end of the array
+  function addEnding(element) {
+    setarray((currentArray) => {
+      return [...currentArray, element];
+    });
+  }
+
+  // Function to remove a specific element (e.g., 4) from the array
+  function removeSpecific() {
+    setarray((currentArray) => {
+      return currentArray.filter((e) => e !== 4);
+    });
+  }
+
+  // Function to replace a specific number (e.g., 5) with another number (e.g., 3) in the array
+  function replace(num, replaceWith) {
+    setarray((currentArray) => {
+      return currentArray.map((e) => {
+        if (e === num) {
+          return replaceWith;
+        }
+        return e;
+      });
+    });
+  }
+
+  return (
+    <>
+      <h1>This is our array</h1>
+      <h2>Array: {array.join(", ")}</h2>
+      <button onClick={removeFirst}>Remove First</button>
+      <button onClick={() => removeSpecific(4)}>Remove Specific 4</button>
+      <button onClick={() => addBegining(4)}>Add Beginning 4</button>
+      <button onClick={() => addEnding(5)}>Add Ending 5</button>
+      <button onClick={() => replace(5, 3)}>Replace 5 with 3</button>
+    </>
+  );
+}
+
+export default App;
+```

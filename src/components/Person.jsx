@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function Person(props) {
     return (
         // <div>
